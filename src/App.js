@@ -1,12 +1,20 @@
-import logo from './logo.svg';
+import { connect } from 'react-redux';
 import './App.css';
+import SubTitle from './components/SubTitle';
 
-function App() {
+function App(props) {
   return (
     <div className="App">
-     <h1>Home</h1>
+     <h1>{props.title}</h1>
+     <SubTitle />
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    title: state.shared.title
+  }
+}
+
+export default connect(mapStateToProps, {})(App);
