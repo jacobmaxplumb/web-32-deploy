@@ -1,7 +1,16 @@
+import axios from "axios"
 import { connect } from "react-redux"
 import { setEditing, setSubText, setSubTitle } from "../actions/sub-title.actions"
+import { axiosWithAuth } from "../services/auth-with-token"
+import { logOut, signIn } from "../services/firebase.service"
 
 const SubTitle = (props) => {
+    // const getData = () => {
+    //     axios.get('myurl').then(res => console.log(res))
+    // }
+    // const getData = () => {
+    //     axiosWithAuth().get('myurl').then(res => console.log(res));
+    // }
     return (
         <div>
             {props.editing ? (
@@ -16,6 +25,8 @@ const SubTitle = (props) => {
                     <button onClick={() => props.setEditing()}>editing</button>
                 </div>
             )}
+            <button onClick={() => signIn()}>SignIn</button>
+            <button onClick={() => logOut()}>SignOut</button>
         </div>
     )
 }
